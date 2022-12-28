@@ -6,4 +6,23 @@ const generateHex = (size) => {
     .join("");
 };
 
-export default function App() {}
+export default function App() {
+  const [score, setScore] = useState(0);
+  const [color, setColor] = useState("#" + generateHex(6));
+  const [array, setArray] = useState(
+    shuffle(["#" + generateHex(6), "#" + generateHex(6), color])
+  );
+
+  const [next, setNext] = useState(false);
+  const [message, setMessage] = useState("");
+
+  const checkColor = (e) => {
+    if (e === color) {
+      setScore(score + 1);
+      setMessage("Correct!");
+    } else {
+      setMessage("Wrong!");
+    }
+    setNext(true);
+  };
+}
