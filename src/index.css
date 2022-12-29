@@ -1,6 +1,44 @@
 .color-picker {
   font-family: sans-serif;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+}
+
+.color-box {
+  width: 250px;
+  height: 250px;
+  border-radius: 1em;
+}
+
+.btn-array {
+  display: flex;
+  gap: 2em;
+}
+
+.picker-btn {
+  margin-top: 1em;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.picker-btn:hover {
+  cursor: pointer;
+}
+
+.next-btn {
+  margin-top: 1em;
+  border: none;
+  padding: 0.4em 0.8em;
+  border-radius: 1em;
+}
+
+.next-btn:hover {
+  cursor: pointer;
+  box-shadow: 5px 5px 2px gray;
+  background-color: rgb(232, 220, 220);
 }
 
 p {

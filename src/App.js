@@ -51,22 +51,13 @@ export default function App() {
   }
 
   return (
-    <div
-      className="color-picker"
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        gap: "1em",
-      }}
-    >
+    <div className="color-picker">
       <div>Score: {score}</div>
-      <div
-        style={{ width: "250px", height: "250px", backgroundColor: color }}
-      ></div>
-      <div style={{ display: "flex", gap: "2em" }}>
+      <div className="color-box" style={{ backgroundColor: color }}></div>
+      <div className="btn-array">
         {array.map((item, i) => (
           <button
+            className="picker-btn"
             onClick={() => checkColor(item)}
             key={i}
             style={next ? { background: item } : { background: "white" }}
@@ -77,6 +68,7 @@ export default function App() {
       </div>
       {next && (
         <button
+          className="next-btn"
           onClick={() => {
             shuffleColors();
             setMessage("");
