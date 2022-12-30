@@ -16,16 +16,33 @@ export default function App() {
 
   const [next, setNext] = useState(false);
   const [message, setMessage] = useState("");
+  const [loseMessage, setLoseMessage] = useState("");
 
   const checkColor = (e) => {
     if (e === color) {
       setScore(score + 1);
       setMessage("Correct!");
     } else {
+      setScore(score - 1);
       setMessage("Wrong!");
     }
+
+    // if (score < 0) {
+    //   setMessage("You lose!");
+    //   return;
+    // }
     setNext(true);
   };
+
+  // make a check function that checks if score is less than 0 showing message "You lose!"
+  // if score is greater than or equal to 10, show message "You win!"
+
+  // const loseScore = () => {
+  //   if (score < 0) {
+  //     setLoseMessage("You lose!");
+  //   }
+  //   return;
+  // };
 
   const shuffleColors = () => {
     let newColor = "#" + generateHex(6);
@@ -52,6 +69,7 @@ export default function App() {
 
   return (
     <div className="color-picker">
+      <h1 className="title">Color Guesser</h1>
       <div>Score: {score}</div>
       <div className="color-box" style={{ backgroundColor: color }}></div>
       <div className="btn-array">
