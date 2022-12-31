@@ -16,7 +16,24 @@ export default function App() {
 
   const [next, setNext] = useState(false);
   const [message, setMessage] = useState("");
-  const [loseMessage, setLoseMessage] = useState("");
+  const [lose, setLose] = useState("");
+  const [win, setWin] = useState("");
+
+  const checkWin = () => {
+    if (score >= 10) {
+      setWin("You Win!");
+    } else {
+      setWin("");
+    }
+  };
+
+  const checkLose = () => {
+    if (score <= -1) {
+      setLose("You Lose! guess again until you're not negative");
+    } else {
+      setLose("");
+    }
+  };
 
   const checkColor = (e) => {
     if (e === color) {
@@ -26,23 +43,11 @@ export default function App() {
       setScore(score - 1);
       setMessage("Wrong!");
     }
+    checkLose();
+    checkWin();
 
-    // if (score < 0) {
-    //   setMessage("You lose!");
-    //   return;
-    // }
     setNext(true);
   };
-
-  // make a check function that checks if score is less than 0 showing message "You lose!"
-  // if score is greater than or equal to 10, show message "You win!"
-
-  // const loseScore = () => {
-  //   if (score < 0) {
-  //     setLoseMessage("You lose!");
-  //   }
-  //   return;
-  // };
 
   const shuffleColors = () => {
     let newColor = "#" + generateHex(6);
@@ -97,6 +102,8 @@ export default function App() {
         </button>
       )}
       <div>{message}</div>
+      <div>{win}</div>
+      <div>{lose}</div>
     </div>
   );
 }
